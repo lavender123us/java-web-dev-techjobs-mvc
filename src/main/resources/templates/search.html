@@ -10,7 +10,7 @@
 
     <h1 th:text="${#strings.capitalizeWords(title)}"></h1>
 
-    <form th:action="@{/search/results}" method = "post">
+    <form th:action="@{/search/results}" method = "post" name="userForm">
         <h2>Search by:</h2>
 
         <p>
@@ -34,9 +34,39 @@
         <input type="submit" value="Search" />
     </form>
 
-    <hr />
+    <hr/>
 
     <!-- TODO #4 - Loop over the search results to display all job fields. -->
+
+    <table th:fragment="searchResult" th:each="job : ${jobs}" class="job-listing">
+<!--        <a hef="@{/search/results}"></a>-->
+
+        <tr>
+            <th>ID:</th>
+            <td th:text="${job.getId()}"></td>
+        </tr>
+        <tr>
+            <th>Name:</th>
+            <td th:text="${job.getName()}"></td>
+        </tr>
+        <tr>
+            <th>Employer:</th>
+            <td th:text="${job.getEmployer()}"></td>
+        </tr>
+        <tr>
+            <th>Location:</th>
+            <td th:text="${job.getLocation()}"></td>
+        </tr>
+        <tr>
+            <th>Position:</th>
+            <td th:text="${job.getPositionType()}"></td>
+        </tr>
+        <tr>
+            <th>Skill:</th>
+            <td th:text="${job.getCoreCompetency()}"></td>
+        </tr>
+
+    </table>
 
 </div>
 
